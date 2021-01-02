@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import wandapp.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', wand_app.views.hello, name='hello'),
+    path('', wandapp.views.hello, name='hello'),
 ]
