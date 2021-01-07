@@ -20,14 +20,21 @@ import wandapp.views
 from rest_framework import routers
 from wandapp.views import UserViewSet, GroupViewSet
 
+
+# from . import views
+
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('wd-hello/', wandapp.views.hello, name='hello'),
 
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    # path('api-vs/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    path('', wandapp.views.index, name='index'),
+    path('wandapp/', include('wandapp.urls')),
+    path('admin/', admin.site.urls),
 ]
